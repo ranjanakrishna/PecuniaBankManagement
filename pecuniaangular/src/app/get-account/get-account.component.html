@@ -1,0 +1,47 @@
+<div class="container mt-3">
+    <table  class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Account Number</th>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Country</th>
+                <th>Phone number</th>
+                <th>Aadhar</th>
+                <th>PAN</th>
+                <th>DOB</th>
+                <th>Gender</th>
+                <th *ngIf='isEmployee()'>Update</th>
+                <th *ngIf='isEmployee()'>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let account of accounts'>
+                <td>{{account.accountNo}}</td>
+                <td>{{account.customerName}}</td>
+                <td>{{account.address}}</td>
+                <td>{{account.city}}</td>
+                <td>{{account.state}}</td>
+                <td>{{account.country}}</td>
+                <td>{{account.phoneNo}}</td>
+                <td>{{account.aadhaarNo}}</td>
+                <td>{{account.panNo}}</td>
+                <td>{{account.dateOfBirth}}</td>
+                <td>{{account.gender}}</td>
+                <td *ngIf='isEmployee()'>
+                    <button class="btn btn-outline-success" (click)='updateAccount(account)'>
+                        update
+                    </button>
+                </td >
+                <td *ngIf='isEmployee()'>
+                    <button class="btn btn-outline-danger" (click)='deleteAccount(account)'>
+                        delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>   
+

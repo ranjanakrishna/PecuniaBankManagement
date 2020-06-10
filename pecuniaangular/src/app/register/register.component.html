@@ -1,0 +1,53 @@
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+<div class="col-md-4 offset-md-4 mt-4">
+    <form #registerForm='ngForm' (ngSubmit)='register(registerForm)'>
+        <div class="card-header">
+            Register
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" #username='ngModel' ngModel class="form-control"
+                    placeholder="Enter username"
+                    pattern="^([a-zA-Z])[a-zA-Z_-]*[\w_-]*[\S]$|^([a-zA-Z])[0-9_-]*[\S]$|^[a-zA-Z]*[\S]$" required>
+                <div *ngIf='username.touched && username.invalid'>
+                    <div class="alert alert-danger" *ngIf='username.errors.required'>
+                        *This field is mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf='username.errors.pattern'>
+                        It can be alphanumeric, starts with an alphabet and contains
+                        no special characters other than underscore or dash.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" name="password" id="password" #password='ngModel' ngModel 
+                class="form-control" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$"
+                    placeholder="Enter Password" required>
+                    <div *ngIf=' password.touched &&  password.invalid'>
+                        <div class="alert alert-danger" *ngIf='password.errors.required'>
+                            *This field is mandatory
+                        </div>
+                        <div class="alert alert-danger" *ngIf='password.errors.pattern'>
+                            Password must be at least 4 characters, no more than 8 characters, 
+                            and must include at least one upper case letter, one lower case letter, and one numeric digit.
+                        </div>
+                    </div>
+            </div>
+            <div class="form-group">
+                <label for="userType">Role</label>
+                <input type="text" name="userType" id="userType" #userType='ngModel' ngModel class="form-control"
+                    placeholder="Enter Role" required>
+                    <div *ngIf=' userType.touched &&  userType.invalid'>
+                        <div class="alert alert-danger" *ngIf='userType.errors.required'>
+                            *This field is mandatory
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" [disabled]='registerForm.invalid' class="btn btn-outline-primary float-right">Register</button>
+        </div>
+    </form>
+</div>

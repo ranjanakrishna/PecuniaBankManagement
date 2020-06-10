@@ -1,0 +1,146 @@
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+<div class="col-md-4 offset-md-4 mt-4">
+    <form #updateAccountForm='ngForm' (ngSubmit)='updateAccount(updateAccountForm)'>
+        <div class="card-header">
+            Update Account
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <input type="hidden" name="accountNo" id="accountNo" #accountNo='ngModel' 
+                [(ngModel)]='accountNo1'
+                    class="form-control">
+
+            </div>
+            <div class="form-group">
+                <label for="customerName">Customer Name</label>
+                <input type="text" placeholder="Enter customer name" name="customerName" id="customerName"
+                    #customerName='ngModel' [(ngModel)]='customerName1' pattern="^[a-zA-Z]+(?: [a-zA-Z]+)*$"
+                    minlength="3" maxlength="15" class="form-control" required>
+                <div class="validationText"
+                    *ngIf='(customerName.dirty || customerName.touched) && customerName.invalid'>
+                    <div class="alert alert-danger" *ngIf='customerName.errors.required'>
+                        *This field is mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf='customerName.errors.minlength'>
+                        *minimum 3 letters mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf='customerName.errors.pattern'>
+                        *only alphabets are allowed
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Customer Address</label>
+                <input type="text" name="address" id="address" #address='ngModel' [(ngModel)]='address1'
+                    class="form-control" placeholder="Enter Address" required>
+                <div *ngIf='address.touched && address.invalid'>
+                    <div class="alert alert-danger" *ngIf='address.errors.required'>
+                        *This field is mandatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">Customer City</label>
+                <input type="text" name="city" id="city" #city='ngModel' [(ngModel)]='city1' class="form-control"
+                    placeholder="Enter Customer City" required>
+                <div *ngIf='city.touched && city.invalid'>
+                    <div class="alert alert-danger" *ngIf='city.errors.required'>
+                        *This field is mandatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="state">state</label>
+                <input type="text" name="state" id="state" #state='ngModel' [(ngModel)]='state1' class="form-control"
+                    placeholder="Enter state" required>
+                <div *ngIf='state.touched && state.invalid'>
+                    <div class="alert alert-danger" *ngIf='state.errors.required'>
+                        *This field is mandatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">country</label>
+                <input type="text" name="country" id="country" #country='ngModel' [(ngModel)]='country1'
+                    class="form-control" placeholder="Enter country" required>
+                <div *ngIf='country.touched && country.invalid'>
+                    <div class="alert alert-danger" *ngIf='country.errors.required'>
+                        *This field is mandatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phoneNo">Phone No</label>
+                <input type="text" name="phoneNo" id="phoneNo" placeholder="Enter phone number" #phoneNo='ngModel'
+                    [(ngModel)]='phoneNo1' required pattern="[0-9]+" minlength="10" maxlength="10" class="form-control">
+                <div class="validationText" *ngIf='phoneNo.invalid &&(phoneNo.dirty || phoneNo.touched)'>
+                    <div class="alert alert-danger" *ngIf='phoneNo.errors.required'>
+                        *This field is mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf='phoneNo.errors.pattern'>
+                        *Enter numbers only.
+                    </div>
+                    <div class="alert alert-danger" *ngIf='phoneNo.errors.minlength'>
+                        *Only enter 10 Digit Mobile No
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="aadhaarNo">Aadhaar Number</label>
+                <input type="text" name="aadhaarNo" id="aadhaarNo" #aadhaarNo='ngModel' [(ngModel)]='aadhaarNo1'
+                    class="form-control" placeholder="Enter Aadhaar Number" minlength="12" maxlength="12" required>
+                <div *ngIf='aadhaarNo.touched && aadhaarNo.invalid'>
+                    <div class="alert alert-danger" *ngIf='aadhaarNo.errors.required'>
+                        *This field is mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf='aadhaarNo.errors.minlength'>
+                        12 digits are required
+                    </div>
+                    <div class="alert alert-danger" *ngIf='aadhaarNo.errors.maxlength'>
+                        12 digits are required
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="panNo">PAN</label>
+                <input type="text" name="panNo" id="panNo" placeholder="Enter PAN Number" #panNo='ngModel'
+                    [(ngModel)]='panNo1' required pattern="^([a-zA-Z]){5}([0-9]){4}([a-zA-Z]){1}?$"
+                    class="form-control">
+                <div class="validationText" *ngIf='panNo.invalid && (panNo.dirty || panNo.touched)'>
+                    <div class="alert alert-danger" *ngIf='panNo.errors.required'>
+                        *This field is mandatory
+                    </div>
+                    <div class="alert alert-danger" *ngIf='panNo.errors.pattern'>
+                        *Invalid PanCardNumber
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Date of birth</label>
+                <input type="date" name="dateOfBirth" id="dateOfBirth" #dateOfBirth='ngModel' [(ngModel)]='dateOfBirth1'
+                    class="form-control" required>
+                <div *ngIf='dateOfBirth.touched && dateOfBirth.invalid'>
+                    <div class="alert alert-danger" *ngIf='dateOfBirth.errors.required'>
+                        *This field is mandatory
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label><br>
+                <input type="radio" name="gender" id="gender" value="male" #gender='ngModel'
+                    [(ngModel)]='gender1'>&nbsp;
+                <label>Male</label>&nbsp;
+                <input type="radio" name="gender" id="gender" value="female" #gender='ngModel'
+                    [(ngModel)]='gender1'>&nbsp;
+                <label>Female</label>&nbsp;
+                <input type="radio" name="gender" id="gender" value="other" #gender='ngModel'
+                    [(ngModel)]='gender1'>&nbsp;
+                <label>Other</label>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-outline-primary float-right">Update
+                Account</button>
+        </div>
+    </form>
+</div>
